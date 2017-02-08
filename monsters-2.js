@@ -10,6 +10,7 @@ monster.modules.actions = (function () {
     return {
         showMe: function () {
             monster.modules.app.log("Nom : " + name + ". Vie : " + life + ". Argent : " + money + ". Réveillé : " + awake);
+            alert('Nom: ' + name + ". Vie: " + life + ". Argent: " + money + ". Reveillé: " + awake);
             monster.modules.app.displayStatus(life,money,awake);
         },
         init: function (n, l, m, a) {
@@ -124,22 +125,36 @@ monster.modules.actions = (function () {
 })();
 
 monster.modules.app = (function () {
-    var buttonRun = document.getElementById("b2");
-    var buttonFight = document.getElementById("b3");
-    var buttonWork = document.getElementById("b7");
-    var buttonSleep = document.getElementById("b4");
-    var buttonEat = document.getElementById("b5");
-    var buttonShow = document.getElementById("b6");
+    var buttonRun;
+    var buttonFight;
+    var buttonWork;
+    var buttonSleep;
+    var buttonEat;
+    var buttonShow;
 
-    var buttonKill = document.getElementById("k");
-    var buttonNewLife = document.getElementById("b1");
+    var buttonKill;
+    var buttonNewLife;
 
-    var logBox = document.getElementById("actionbox");
+    var logBox;
 
-    var stats = document.getElementById("status");
+    var stats;
 
     return {
         run : function(){
+
+            buttonRun = document.querySelector("#b2");
+            buttonFight = document.querySelector("#b3");
+            buttonWork = document.querySelector("#b7");
+            buttonSleep = document.querySelector("#b4");
+            buttonEat = document.querySelector("#b5");
+            buttonShow = document.querySelector("#b6");
+
+            buttonKill = document.querySelector("#k");
+            buttonNewLife = document.querySelector("#b1");
+
+            logBox = document.querySelector("#actionbox");
+            stats = document.querySelector("#status");
+
             monster.modules.actions.init("Jean-Michel",10,20,true);
             buttonShow.onclick = function(){
                 monster.modules.actions.showMe();
